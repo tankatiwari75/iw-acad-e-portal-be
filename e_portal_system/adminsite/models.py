@@ -5,8 +5,6 @@ from django.contrib.auth.models import AbstractUser
 
 class AddUser(AbstractUser):
     middle_name = models.CharField(max_length=150, blank=True)
-    groups = None
-    user_permissions = None
 
 
 class AddClassNumber(models.Model):
