@@ -1,6 +1,5 @@
 from django.urls import path
-from .viewset_views import StudentRegisterModelViewSet
-from .views import ClassCreateAPIView, CreateSubjectAPIView, NoticeBoardUploadView
+from .views import ClassCreateAPIView, CreateSubjectAPIView, NoticeBoardUploadView, StudentRegisterModelViewSet
 from rest_framework.routers import DefaultRouter
 
 
