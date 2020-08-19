@@ -1,9 +1,13 @@
 from django.urls import path
-from .class_views import StudentRegister, StudentDetail
+from .viewset_views import StudentRegisterModelViewSet
+from rest_framework.routers import DefaultRouter
+
+r= DefaultRouter()
+r.register('studentregister', StudentRegisterModelViewSet)
+
+
 # app_name="adminsite"
 
 urlpatterns =[
-    path("studentregister/", StudentRegister.as_view()),
 
-
-]
+] + r.urls
