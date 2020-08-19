@@ -2,14 +2,15 @@ from django.shortcuts import render
 
 # Create your views here.
 from django.shortcuts import render
-from adminsite.serializers import (
+from .serializers import (
                                 CreateClassSerializers,
                                 CreateSubjectSerializers,
                                 NoticeUploadSerializers,
+                                StudentModelSerializer,
                                 )
 from rest_framework.generics import CreateAPIView
 from rest_framework.viewsets import ModelViewSet
-from adminsite.models import AddSubject, NoticeUpload
+from .models import AddSubject, NoticeUpload, StudentRegistration
 
 
 # Create your views here.
@@ -24,4 +25,9 @@ class CreateSubjectAPIView(ModelViewSet):
 class NoticeBoardUploadView(ModelViewSet):
     serializer_class=NoticeUploadSerializers
     queryset=NoticeUpload.objects.all()
+
+class StudentRegisterModelViewSet(ModelViewSet):
+    serializer_class = StudentModelSerializer
+    queryset = StudentRegistration.objects.all()
+
 
