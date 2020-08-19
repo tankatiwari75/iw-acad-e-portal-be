@@ -6,3 +6,5 @@ from django.db import models
 # One for Result Upload
 
 
+class AttendanceUpload(models.Model):
+    date

@@ -18,5 +18,9 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+<<<<<<< HEAD
     path('rest/', include("adminsite.urls",namespace="adminsite"))
+=======
+    path('adminsite/', include('adminsite.urls'))
+>>>>>>> origin/dev
 ]
