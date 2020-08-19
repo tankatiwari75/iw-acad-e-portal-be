@@ -4,3 +4,5 @@ from django.db import models
 # add two models here
 # One for attendance upload
 # One for Result Upload
+
+
