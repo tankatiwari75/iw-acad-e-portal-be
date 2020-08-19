@@ -24,7 +24,7 @@ class AddSubject(models.Model):
 
 
 class StudentRegistration(models.Model):
-    profile_picture = models.ImageField()
+    profile_picture = models.ImageField(null=True, blank=True   )
 
     first_name = models.CharField(max_length=150)
     middle_name = models.CharField(max_length=150, blank=True)
