@@ -1,12 +1,14 @@
 from django.urls import path
-from adminsite.views import ClassCreateAPIView, CreateSubjectAPIView, NoticeBoardUploadView
-
-
+from .viewset_views import StudentRegisterModelViewSet
+from .views import ClassCreateAPIView, CreateSubjectAPIView, NoticeBoardUploadView
 from rest_framework.routers import DefaultRouter
-r=DefaultRouter()
 
-r.register('add-subject',CreateSubjectAPIView)
-r.register('add-notice',NoticeBoardUploadView)
+
+r= DefaultRouter()
+r.register('studentregister', StudentRegisterModelViewSet)
+r.register('subjectregister', CreateSubjectAPIView)
+r.register('noticeboard', NoticeBoardUploadView)
+
 
 app_name="adminsite"
 urlpatterns=[
