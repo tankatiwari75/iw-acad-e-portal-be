@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'students',
     'adminsite',
-    'rest_framework'
+    'rest_framework',
+    'teachers',
 ]
 
 MIDDLEWARE = [
