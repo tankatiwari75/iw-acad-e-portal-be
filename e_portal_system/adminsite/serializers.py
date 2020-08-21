@@ -1,4 +1,4 @@
-from .models import AddClassNumber, AddSubject, NoticeUpload, StudentRegistration
+from .models import AddClassNumber, AddSubject, NoticeUpload, StudentRegistration, RoleForTeacher, DirectMessageModel
 from rest_framework import serializers
 
 class StudentModelSerializer(serializers.ModelSerializer):
@@ -47,3 +47,13 @@ class NoticeUploadSerializers(serializers.ModelSerializer):
     class Meta:
         model=NoticeUpload
         fields="__all__"
+
+class RoleForTeacherSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = RoleForTeacher
+        fields="__all__"
+
+class DirectMessageSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = DirectMessageModel
+        fields = "__all__"
