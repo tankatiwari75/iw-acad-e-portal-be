@@ -1,10 +1,6 @@
 from django.db import models
 from adminsite.models import AddClassNumber, AddSubject, StudentRegistration, TeacherRegistration
 from django.utils import timezone
-# Create your models here.
-# add two models here
-# One for attendance upload
-# One for Result Upload
 
 
 class AttendanceUploads(models.Model):
