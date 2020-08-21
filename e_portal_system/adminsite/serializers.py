@@ -1,8 +1,6 @@
 from .models import AddClassNumber, AddSubject, NoticeUpload, StudentRegistration
 from rest_framework import serializers
 
-
-
 class StudentModelSerializer(serializers.ModelSerializer):
     class Meta:
         model = StudentRegistration
@@ -33,8 +31,6 @@ class StudentModelSerializer(serializers.ModelSerializer):
         #     if len(name)  <=2:
         #         raise serializers.ValidationError("Name should be greater than 2 letters")
         #     return data
-
-
 
 
 class CreateClassSerializers(serializers.ModelSerializer):

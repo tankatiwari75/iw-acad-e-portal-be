@@ -1,1 +1,4 @@
 venv/
+adminsite/__pycache__/
+teachers/__pycache__/
+students/__pycache__/
