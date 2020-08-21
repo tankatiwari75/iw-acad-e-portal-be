@@ -7,7 +7,7 @@ from .serializers import (
                                 CreateSubjectSerializers,
                                 NoticeUploadSerializers,
                                 StudentModelSerializer,
-                                )
+                          )
 from rest_framework.generics import CreateAPIView
 from rest_framework.viewsets import ModelViewSet
 from .models import AddSubject, NoticeUpload, StudentRegistration
@@ -20,7 +20,6 @@ class ClassCreateAPIView(CreateAPIView):
 class CreateSubjectAPIView(ModelViewSet):
     serializer_class=CreateSubjectSerializers
     queryset=AddSubject.objects.all()
-
 
 class NoticeBoardUploadView(ModelViewSet):
     serializer_class=NoticeUploadSerializers
