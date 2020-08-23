@@ -32,6 +32,10 @@ class StudentModelSerializer(serializers.ModelSerializer):
         #         raise serializers.ValidationError("Name should be greater than 2 letters")
         #     return data
 
+class GetStudentSerializers(serializers.ModelSerializer):
+    class Meta:
+        model= StudentRegistration
+        fields=["id","first_name","last_name"]
 
 class CreateClassSerializers(serializers.ModelSerializer):
     class Meta:
@@ -57,3 +61,8 @@ class DirectMessageSerializer(serializers.ModelSerializer):
     class Meta:
         model = DirectMessageModel
         fields = "__all__"
+        
+class FetchSubject(serializers.ModelSerializer):
+    class Meta:
+        model= RoleForTeacher
+        fields=["subject_name"]
