@@ -78,7 +78,7 @@ class RoleForTeacher(models.Model):
     teacher_name = models.ForeignKey(TeacherRegistration, on_delete=models.CASCADE)
     class_number = models.ForeignKey(AddClassNumber, on_delete=models.CASCADE)
     subject_name = models.ForeignKey(AddSubject, on_delete=models.CASCADE)
-    description = models.TextField(blank=False, null=True)
+    # description = models.TextField(blank=False, null=True)
 
     def __str__(self):
         return str(self.teacher_name)
@@ -86,9 +86,10 @@ class RoleForTeacher(models.Model):
 
 class DirectMessageModel(models.Model):
     teacher_name = models.ForeignKey(TeacherRegistration, on_delete=models.CASCADE)
-    student_name  = models.ForeignKey(StudentRegistration,on_delete=models.CASCADE)
+    student_name = models.ForeignKey(StudentRegistration,on_delete=models.CASCADE)
     message = models.TextField(blank=True, null=False)
-    attachment = models.ImageField(upload_to='media')
+    attachment = models.FileField(upload_to='media', null=True, blank=True)
+    # attachment = models.ImageField(upload_to='media',null=True,blank=True)
     created_at = models.DateTimeField(auto_now_add=True, null=True, blank=True)
 
     def __str__(self):

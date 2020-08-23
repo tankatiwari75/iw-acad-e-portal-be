@@ -55,7 +55,7 @@ class NoticeUploadSerializers(serializers.ModelSerializer):
 class RoleForTeacherSerializer(serializers.ModelSerializer):
     class Meta:
         model = RoleForTeacher
-        fields="__all__"
+        fields = "__all__"
 
 class DirectMessageSerializer(serializers.ModelSerializer):
     class Meta:
