@@ -61,7 +61,8 @@ class DirectMessageSerializer(serializers.ModelSerializer):
     class Meta:
         model = DirectMessageModel
         fields = "__all__"
-        
+
+
 class FetchSubject(serializers.ModelSerializer):
     class Meta:
         model= RoleForTeacher

@@ -88,9 +88,9 @@ class DirectMessageModel(models.Model):
     teacher_name = models.ForeignKey(TeacherRegistration, on_delete=models.CASCADE)
     student_name  = models.ForeignKey(StudentRegistration,on_delete=models.CASCADE)
     message = models.TextField(blank=True, null=False)
-    attachment = models.ImageField(upload_to='media')
+    attachment = models.ImageField(upload_to='media', null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True, null=True, blank=True)
 
     def __str__(self):
-        return self.teacher_name
+        return str(self.teacher_name)
 

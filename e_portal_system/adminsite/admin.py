@@ -5,7 +5,8 @@ from adminsite.models import (AddSubject,
                               AddClassNumber,
                               TeacherRegistration,
                               NoticeUpload,
-                              RoleForTeacher
+                              RoleForTeacher,
+                                DirectMessageModel
                               )
 
 admin.site.register(AddClassNumber)
@@ -15,4 +16,5 @@ admin.site.register(StudentRegistration)
 admin.site.register(TeacherRegistration)
 admin.site.register(NoticeUpload)
 admin.site.register(RoleForTeacher)
+admin.site.register(DirectMessageModel)
 

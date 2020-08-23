@@ -7,8 +7,8 @@ r= DefaultRouter()
 r.register('studentregister', StudentRegisterModelViewSet)
 r.register('subjectregister', CreateSubjectAPIView)
 r.register('noticeboard', NoticeBoardUploadView)
-r.register('roleforteacher',RoleforTeacherModelView)
-r.register('directmessage',DirectMessageModelView)
+r.register('roleforteacher', RoleforTeacherModelView)
+r.register('directmessage', DirectMessageModelView)
 
 app_name="adminsite"
 urlpatterns=[

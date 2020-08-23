@@ -44,3 +44,4 @@ class DirectMessageModelView(ModelViewSet):
     queryset = DirectMessageModel.objects.all()
 
 
+
