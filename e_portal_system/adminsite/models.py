@@ -90,8 +90,12 @@ class DirectMessageModel(models.Model):
     message = models.TextField(blank=True, null=False)
     attachment = models.FileField(upload_to='media', null=True, blank=True)
     # attachment = models.ImageField(upload_to='media',null=True,blank=True)
-    created_at = models.DateTimeField(auto_now_add=True, null=True, blank=True)
+    created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return self.teacher_name
+
+
+
+
 
