@@ -3,13 +3,12 @@ from .views import ClassCreateAPIView, CreateSubjectAPIView, NoticeBoardUploadVi
 from rest_framework.routers import DefaultRouter
 
 
-r= DefaultRouter()
+r = DefaultRouter()
 r.register('studentregister', StudentRegisterModelViewSet)
 r.register('subjectregister', CreateSubjectAPIView)
 r.register('noticeboard', NoticeBoardUploadView)
 r.register('roleforteacher', RoleforTeacherModelView)
 r.register('directmessage', DirectMessageModelView)
-
 
 app_name="adminsite"
 urlpatterns=[

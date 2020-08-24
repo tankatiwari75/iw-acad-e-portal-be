@@ -40,3 +40,18 @@ class GetSubjectsByTeacher(viewsets.ViewSet):
         return Response(serializer.data)    
 
 
+#to get the list of students classWises
+class StudentListForAttendance(viewsets.ViewSet):
+
+    def list(self, request, class_number):
+        queryset = StudentRegistration.objects.filter(class_number=class_number)
+        serializer = GetStudentSerializers(queryset, many=True)
+        return Response(serializer.data)
+
+
+# For teacher to get subjects based on class_number
+class GetSubjectsByTeacher(viewsets.ViewSet):
+    def list(self, request,id,class_number):
+        queryset=RoleForTeacher.objects.filter(id=id, class_number=class_number)
+        serializer = FetchSubject(queryset, many=True)
+        return Response(serializer.data)

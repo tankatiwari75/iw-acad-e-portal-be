@@ -36,4 +36,13 @@ class DirectMessageModelView(ModelViewSet):
     serializer_class = DirectMessageSerializer
     queryset = DirectMessageModel.objects.all()     
 
+class RoleforTeacherModelView(ModelViewSet):
+    serializer_class = RoleForTeacherSerializer
+    queryset = RoleForTeacher.objects.all()
+
+class DirectMessageModelView(ModelViewSet):
+    serializer_class = DirectMessageSerializer
+    queryset = DirectMessageModel.objects.all()
+
+
 

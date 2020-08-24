@@ -24,4 +24,4 @@ class ResultUploadModelSerializer(serializers.ModelSerializer):
             'subject_name',
             'student_id',
             'marks',
-        ]
+        ] 

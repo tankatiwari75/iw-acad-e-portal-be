@@ -8,15 +8,15 @@ class AddUser(AbstractUser):
 
 
 class AddClassNumber(models.Model):
-    class_number = models.CharField(max_length=2)
+    class_number = models.CharField(max_length=2,unique=True)
 
     def __str__(self):
         return self.class_number
 
 
 class AddSubject(models.Model):
-    class_number = models.ForeignKey(AddClassNumber, on_delete=models.CASCADE)
-    subject_name = models.CharField(max_length=30)
+    class_number = models.ForeignKey(AddClassNumber, to_field="class_number", on_delete=models.CASCADE)
+    subject_name = models.CharField(max_length=30,unique=True)
     subject_syllabus = models.FileField(blank=True)
 
     def __str__(self):
@@ -30,7 +30,7 @@ class StudentRegistration(models.Model):
     last_name = models.CharField(max_length=150)
     email = models.EmailField()
     admission_number = models.IntegerField(unique=True)
-    class_number = models.ForeignKey(AddClassNumber, on_delete=models.CASCADE)
+    class_number = models.ForeignKey(AddClassNumber, to_field="class_number", on_delete=models.CASCADE)
     age = models.IntegerField()
     GENDER_CHOICE = (
         ('M', 'Male'),
@@ -75,8 +75,9 @@ class NoticeUpload(models.Model):
 
 class RoleForTeacher(models.Model):
     teacher_name = models.ForeignKey(TeacherRegistration, on_delete=models.CASCADE)
-    class_number = models.ForeignKey(AddClassNumber, on_delete=models.CASCADE)
+    class_number = models.ForeignKey(AddClassNumber, to_field="class_number", on_delete=models.CASCADE)
     subject_name = models.ForeignKey(AddSubject, on_delete=models.CASCADE)
+    description = models.TextField(blank=False, null=True)
 
     def __str__(self):
         return str(self.teacher_name)
