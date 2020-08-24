@@ -24,8 +24,7 @@ class AddSubject(models.Model):
 
 
 class StudentRegistration(models.Model):
-    profile_picture = models.ImageField(null=True, blank=True   )
-
+    profile_picture = models.ImageField(null=True, blank=True)
     first_name = models.CharField(max_length=150)
     middle_name = models.CharField(max_length=150, blank=True)
     last_name = models.CharField(max_length=150)
@@ -81,3 +80,16 @@ class RoleForTeacher(models.Model):
 
     def __str__(self):
         return str(self.teacher_name)
+
+
+class DirectMessageModel(models.Model):
+    teacher_name = models.ForeignKey(TeacherRegistration, on_delete=models.CASCADE)
+    student_name  = models.ForeignKey(StudentRegistration, on_delete=models.CASCADE)
+    message = models.TextField(blank=True, null=False)
+    attachment = models.ImageField(upload_to='media')
+    created_at = models.DateTimeField(auto_now_add=True, null=True, blank=True)
+
+    def __str__(self):
+        return self.teacher_name        
+
+
