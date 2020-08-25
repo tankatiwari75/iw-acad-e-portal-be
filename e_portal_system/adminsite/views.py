@@ -1,4 +1,7 @@
 from django.shortcuts import render
+# from rest_framework.generics import CreateAPIView
+# from rest_framework.viewsets import ModelViewSet
+# from .models import AddSubject, NoticeUpload, StudentRegistration
 
 # Create your views here.
 from django.shortcuts import render
@@ -10,9 +13,11 @@ from .serializers import (
                                 RoleForTeacherSerializer,
                                 DirectMessageSerializer,
                                 )
+
 from rest_framework.generics import CreateAPIView
 from rest_framework.viewsets import ModelViewSet
-from .models import AddSubject, NoticeUpload, StudentRegistration , RoleForTeacher ,DirectMessageModel
+from .models import AddSubject, NoticeUpload, StudentRegistration , RoleForTeacher, DirectMessageModel
+from rest_framework.response import Response
 
 
 # Create your views here.
@@ -22,7 +27,6 @@ class ClassCreateAPIView(CreateAPIView):
 class CreateSubjectAPIView(ModelViewSet):
     serializer_class=CreateSubjectSerializers
     queryset=AddSubject.objects.all()
-
 
 class NoticeBoardUploadView(ModelViewSet):
     serializer_class=NoticeUploadSerializers
@@ -37,7 +41,10 @@ class RoleforTeacherModelView(ModelViewSet):
     queryset = RoleForTeacher.objects.all()
 
 class DirectMessageModelView(ModelViewSet):
-    serializer_class = DirectMessageSerializer
-    queryset = DirectMessageModel.objects.all()
+    def list (self, request, id):
+        queryset = DirectMessageModel.objects.filter(id=id)
+        serializer = DirectMessageSerializer(queryset, many=True)
+        return Response(serializer.data)
+
 
 
