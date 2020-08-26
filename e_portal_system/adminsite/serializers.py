@@ -6,6 +6,7 @@ class StudentModelSerializer(serializers.ModelSerializer):
         model = StudentRegistration
         # fields = "__all__"
         fields = [
+            'id',   
             'profile_picture',
             'first_name',
             'middle_name',
@@ -61,7 +62,8 @@ class DirectMessageSerializer(serializers.ModelSerializer):
     class Meta:
         model = DirectMessageModel
         fields = "__all__"
-        
+
+
 class FetchSubject(serializers.ModelSerializer):
     class Meta:
         model= RoleForTeacher
