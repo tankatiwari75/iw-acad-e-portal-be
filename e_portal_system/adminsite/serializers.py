@@ -6,6 +6,7 @@ class StudentModelSerializer(serializers.ModelSerializer):
         model = StudentRegistration
         # fields = "__all__"
         fields = [
+            'id',   
             'profile_picture',
             'first_name',
             'middle_name',
