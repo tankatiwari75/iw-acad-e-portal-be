@@ -67,6 +67,7 @@ class TeacherRegistration(models.Model):
 class NoticeUpload(models.Model):
     notice_title = models.CharField(max_length=200)
     notice_description = models.TextField()
+    created_by = models.CharField(max_length=200, null=False)
     time_changed = models.DateTimeField(auto_now=True)
     time_created = models.DateTimeField(auto_now_add=True)
 
