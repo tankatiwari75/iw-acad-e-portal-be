@@ -2,8 +2,8 @@
 from django.shortcuts import render
 from rest_framework.viewsets import ModelViewSet
 from rest_framework import viewsets
-from adminsite.models import StudentRegistration, RoleForTeacher, AddSubject
-from adminsite.serializers import GetStudentSerializers, FetchSubject,CreateSubjectSerializers
+from adminsite.models import StudentRegistration, RoleForTeacher, AddSubject, TeacherRegistration
+from adminsite.serializers import GetStudentSerializers, FetchSubject, CreateSubjectSerializers
 from rest_framework.response import Response
 from rest_framework.generics import ListAPIView
 
