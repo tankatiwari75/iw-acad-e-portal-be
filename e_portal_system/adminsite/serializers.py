@@ -34,8 +34,8 @@ class StudentModelSerializer(serializers.ModelSerializer):
 
 class GetStudentSerializers(serializers.ModelSerializer):
     class Meta:
-        model= StudentRegistration
-        fields=["id","first_name","last_name"]
+        model = StudentRegistration
+        fields = ["id","first_name","last_name"]
 
 
 class TeacherModelSerializer(serializers.ModelSerializer):
@@ -64,7 +64,7 @@ class TeacherModelSerializer(serializers.ModelSerializer):
 class CreateClassSerializers(serializers.ModelSerializer):
     class Meta:
         model = AddClassNumber
-        fields="__all__"
+        fields = "__all__"
 
 class CreateSubjectSerializers(serializers.ModelSerializer):
     class Meta:
@@ -73,8 +73,8 @@ class CreateSubjectSerializers(serializers.ModelSerializer):
 
 class NoticeUploadSerializers(serializers.ModelSerializer):
     class Meta:
-        model=NoticeUpload
-        fields="__all__"
+        model = NoticeUpload
+        fields = "__all__"
 
 class RoleForTeacherSerializer(serializers.ModelSerializer):
     class Meta:
