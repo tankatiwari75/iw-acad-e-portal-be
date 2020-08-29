@@ -12,11 +12,12 @@ from .serializers import (
                                 StudentModelSerializer,
                                 RoleForTeacherSerializer,
                                 DirectMessageSerializer,
+                                TeacherRegistrationSerializers
                                 )
 
 from rest_framework.generics import CreateAPIView
 from rest_framework.viewsets import ModelViewSet
-from .models import AddSubject, NoticeUpload, StudentRegistration , RoleForTeacher ,DirectMessageModel
+from .models import AddSubject, NoticeUpload, StudentRegistration , RoleForTeacher ,DirectMessageModel, TeacherRegistration
 
 
 # Create your views here.
@@ -34,6 +35,10 @@ class NoticeBoardUploadView(ModelViewSet):
 class StudentRegisterModelViewSet(ModelViewSet):
     serializer_class = StudentModelSerializer
     queryset = StudentRegistration.objects.all()
+
+class TeacherRegisterModelViewSet(ModelViewSet):
+    serializer_class = TeacherRegistrationSerializers
+    queryset = TeacherRegistration.objects.all()
 
 class RoleforTeacherModelView(ModelViewSet):
     serializer_class = RoleForTeacherSerializer
