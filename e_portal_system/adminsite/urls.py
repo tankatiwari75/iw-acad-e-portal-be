@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import ClassCreateAPIView, CreateSubjectAPIView, NoticeBoardUploadView, StudentRegisterModelViewSet , RoleforTeacherModelView,DirectMessageModelView
+from .views import ClassCreateAPIView, CreateSubjectAPIView, NoticeBoardUploadView,TeacherRegisterModelViewSet, StudentRegisterModelViewSet , RoleforTeacherModelView,DirectMessageModelView
 from rest_framework.routers import DefaultRouter
 
 
@@ -9,6 +9,7 @@ r.register('subjectregister', CreateSubjectAPIView)
 r.register('noticeboard', NoticeBoardUploadView)
 r.register('roleforteacher', RoleforTeacherModelView)
 r.register('directmessage', DirectMessageModelView)
+r.register('teacherregister',TeacherRegisterModelViewSet)
 
 app_name="adminsite"
 urlpatterns=[
