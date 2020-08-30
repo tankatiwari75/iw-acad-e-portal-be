@@ -3,12 +3,12 @@ adminsite/__pycache__/
 teachers/__pycache__/
 students/__pycache__/
 
-e_portal_system/db.sqlite3
+/e_portal_system/db.sqlite3
 
-e_portal_system/e_portal_system/__pycache__
-e_portal_system/adminsite/__pycache__
-e_portal_system/teachers/__pycache__
-e_portal_system/students/__pycache__
+/e_portal_system/e_portal_system/__pycache__
+/e_portal_system/adminsite/__pycache__
+/e_portal_system/teachers/__pycache__
+/e_portal_system/students/__pycache__
 
 
 e_portal_system/teachers/__pycache__/
