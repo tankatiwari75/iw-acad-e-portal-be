@@ -9,11 +9,4 @@ class AttendanceUploadsModelSerializer(serializers.ModelSerializer):
 class ResultUploadModelSerializer(serializers.ModelSerializer):
     class Meta:
         model = ResultUpload
-        # fields = "__all__"
-        fields = [
-            'student_name',
-            'teacher_name',
-            'subject_name',
-            'student_id',
-            'marks',
-        ]
+        fields = "__all__"

@@ -20,6 +20,13 @@ class AttendanceUploadsView(CreateAPIView):
     serializer_class = AttendanceUploadsModelSerializer
     queryset = AttendanceUploads.objects.all()
 
+class FetchAttendanceByStudent(viewsets.ViewSet):
+
+    def list(self, request,student_id):
+        queryset = AttendanceUploads.objects.filter(student_id=student_id)
+        serializer = AttendanceUploadsModelSerializer(queryset, many=True)
+        return Response(serializer.data)
+
 
 class ResultUploadUploadView(CreateAPIView):
     serializer_class = ResultUploadModelSerializer
@@ -41,4 +48,10 @@ class GetSubjectsByTeacher(viewsets.ViewSet):
     def list(self, request,id,class_number):
         queryset=RoleForTeacher.objects.filter(id=id, class_number=class_number)
         serializer = FetchSubject(queryset, many=True)
+        return Response(serializer.data)
+        
+class FetchResultByStudent(viewsets.ViewSet):
+    def list(self, request,student_id):
+        queryset = ResultUpload.objects.filter(student_id=student_id)
+        serializer = ResultUploadModelSerializer(queryset, many=True)
         return Response(serializer.data)

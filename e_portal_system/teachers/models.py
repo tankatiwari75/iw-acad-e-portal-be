@@ -17,3 +17,4 @@ class ResultUpload(models.Model):
     subject_name= models.ForeignKey(AddSubject, related_name="subjects", on_delete=models.CASCADE)
     student_id= models.ForeignKey(StudentRegistration, related_name="id11", on_delete=models.CASCADE)
     marks=models.IntegerField()
+    pass_status = models.BooleanField(default=False)

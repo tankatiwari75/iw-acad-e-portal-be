@@ -78,7 +78,7 @@ class NoticeUpload(models.Model):
 class RoleForTeacher(models.Model):
     teacher_name = models.ForeignKey(TeacherRegistration, on_delete=models.CASCADE)
     class_number = models.ForeignKey(AddClassNumber, to_field="class_number", on_delete=models.CASCADE)
-    subject_name = models.ForeignKey(AddSubject, on_delete=models.CASCADE)
+    subject_name = models.ForeignKey(AddSubject, to_field="subject_name", on_delete=models.CASCADE)
     description = models.TextField(blank=False, null=True)
 
     def __str__(self):
