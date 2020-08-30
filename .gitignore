@@ -12,3 +12,10 @@ e_portal_system/students/__pycache__/
 
 
 e_portal_system/teachers/__pycache__/
+
+e_portal_system/adminsite/__pycache__/models.cpython-38.pyc
+e_portal_system/db.sqlite3
+e_portal_system/teachers/__pycache__/models.cpython-38.pyc
+e_portal_system/teachers/__pycache__/serializers.cpython-38.pyc
+e_portal_system/teachers/__pycache__/urls.cpython-38.pyc
+e_portal_system/teachers/__pycache__/views.cpython-38.pyc
