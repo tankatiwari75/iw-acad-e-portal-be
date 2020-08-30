@@ -4,7 +4,7 @@ from teachers.views import AttendanceUploadsView, ResultUploadUploadView, GetSub
 urlpatterns=[
     path('attendanceuploads/', AttendanceUploadsView.as_view()),
     path('resultuploads/', ResultUploadUploadView.as_view()),
-    path("attendance/<int:class_number>/",StudentListForAttendance.as_view({'get':'list'})),
+    path("<int:class_number>/<int:teacher_id>/<str:subject_name>/",StudentListForAttendance.as_view({'get':'list'})),
     path("<int:id>/<int:class_number>/",GetSubjectsByTeacher.as_view({'get':'list'})),
 
 ]

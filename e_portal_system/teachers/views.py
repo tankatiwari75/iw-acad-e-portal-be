@@ -29,9 +29,9 @@ class ResultUploadUploadView(CreateAPIView):
 #to get the list of students classWises
 class StudentListForAttendance(viewsets.ViewSet):
 
-    def list(self, request, class_number):
-        queryset = StudentRegistration.objects.filter(class_number=class_number)
-        serializer = GetStudentSerializers(queryset, many=True)
+    def list(self, request, class_number,teacher_id, subject_name):
+        queryset = AttendanceUploads.objects.filter(class_number=class_number, teacher_id=teacher_id, subject_name=subject_name)
+        serializer = AttendanceUploadsModelSerializer(queryset, many=True)
         return Response(serializer.data)
 
 

@@ -7,6 +7,7 @@ class AttendanceUploads(models.Model):
     student_id=models.ForeignKey(StudentRegistration,related_name="student", on_delete=models.CASCADE)
     teacher_id= models.ForeignKey(TeacherRegistration, related_name="teacher", on_delete=models.CASCADE)
     subject_name= models.ForeignKey(AddSubject, to_field="subject_name", on_delete=models.CASCADE)
+    class_number = models.ForeignKey(AddClassNumber, to_field="class_number", on_delete=models.CASCADE)
     class_held= models.IntegerField(default=0)
     class_present = models.IntegerField(default=0)
 
