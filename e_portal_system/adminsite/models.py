@@ -25,11 +25,7 @@ class AddSubject(models.Model):
 
 class StudentRegistration(models.Model):
     profile_picture = models.ImageField(null=True, blank=True)
-
-    first_name = models.CharField(max_length=150)
-    middle_name = models.CharField(max_length=150, blank=True)
-    last_name = models.CharField(max_length=150)
-    email = models.EmailField()
+    student_user = models.OneToOneField(AddUser,on_delete=models.CASCADE)
     admission_number = models.IntegerField(unique=True)
     class_number = models.ForeignKey(AddClassNumber, to_field="class_number", on_delete=models.CASCADE)
     age = models.IntegerField()
@@ -42,32 +38,29 @@ class StudentRegistration(models.Model):
     parents_number = models.CharField(max_length=10)
     date_of_birth = models.DateField()
     address = models.TextField()
-    password = models.CharField(max_length=150)
 
     def __str__(self):
-        fullname = self.first_name + " " + self.last_name
+        fullname = self.student_user.first_name + " " + self.student_user.last_name
         return fullname
 
 
 class TeacherRegistration(models.Model):
     profile_picture = models.ImageField()
-    first_name = models.CharField(max_length=150)
-    middle_name = models.CharField(max_length=150, blank=True)
-    last_name = models.CharField(max_length=150)
-    email = models.EmailField()
+    
+    teacher_user = models.OneToOneField(AddUser, on_delete=models.CASCADE)
+    teacher_unique_id = models.IntegerField(unique=True)
     phone_no = models.CharField(max_length=10)
     qualifications = models.TextField()
-    password = models.CharField(max_length=50)
 
     def __str__(self):
-        fullname = self.first_name + " " + self.last_name
+        fullname = self.teacher_user.first_name + " " + self.teacher_user.last_name
         return fullname
 
 
 class NoticeUpload(models.Model):
     notice_title = models.CharField(max_length=200)
     notice_description = models.TextField()
-    created_by = models.CharField(max_length=200, null=False)
+    created_by = models.ForeignKey(AddUser,to_field="username", on_delete=models.CASCADE)
     time_changed = models.DateTimeField(auto_now=True)
     time_created = models.DateTimeField(auto_now_add=True)
 
@@ -76,22 +69,22 @@ class NoticeUpload(models.Model):
 
 
 class RoleForTeacher(models.Model):
-    teacher_name = models.ForeignKey(TeacherRegistration, on_delete=models.CASCADE)
+    teacher_name = models.ForeignKey(TeacherRegistration, to_field="teacher_unique_id", on_delete=models.CASCADE)
     class_number = models.ForeignKey(AddClassNumber, to_field="class_number", on_delete=models.CASCADE)
-    subject_name = models.ForeignKey(AddSubject, on_delete=models.CASCADE)
-    description = models.TextField(blank=False, null=True)
+    subject_name = models.ForeignKey(AddSubject,to_field="subject_name", on_delete=models.CASCADE)
 
     def __str__(self):
         return str(self.teacher_name)
 
 
 class DirectMessageModel(models.Model):
-    teacher_name = models.ForeignKey(TeacherRegistration, on_delete=models.CASCADE)
-    student_name  = models.ForeignKey(StudentRegistration,on_delete=models.CASCADE)
-    message = models.TextField(blank=True, null=False)
+    teacher_name = models.ForeignKey(TeacherRegistration, to_field="teacher_unique_id", on_delete=models.CASCADE)
+    student_admission_number = models.ForeignKey(StudentRegistration,to_field="admission_number", on_delete=models.CASCADE)
+    message = models.TextField()
     attachment = models.ImageField(upload_to='media', null=True, blank=True)
-    created_at = models.DateTimeField(auto_now_add=True, null=True, blank=True)
+    created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return str(self.teacher_name)
+
 

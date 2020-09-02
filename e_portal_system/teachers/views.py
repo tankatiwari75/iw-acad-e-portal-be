@@ -39,6 +39,6 @@ class StudentListForAttendance(viewsets.ViewSet):
 class GetSubjectsByTeacher(viewsets.ViewSet):
     
     def list(self, request,id,class_number):
-        queryset=RoleForTeacher.objects.filter(id=id, class_number=class_number)
+        queryset=RoleForTeacher.objects.filter(teacher_unique_id=id, class_number=class_number)
         serializer = FetchSubject(queryset, many=True)
         return Response(serializer.data)
