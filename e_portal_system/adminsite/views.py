@@ -45,27 +45,24 @@ class StudentRegisterModelViewSet(ModelViewSet):
 
     def create(self,request,*args,**kwargs):
         post_data = request.data
-        first_name = post_data["student_user"]["first_name"]
-        last_name = post_data["student_user"]["last_name"]
-        username = post_data["student_user"]["username"]
-        email = post_data["student_user"]["email"]
-        password = post_data["student_user"]["password"]
-
+        password=post_data["student_user"]["password"]
         new_user = AddUser.objects.create(
-            first_name=first_name,
-            last_name=last_name,
-            username=username,
-            email=email,
+            first_name=post_data["student_user"]["first_name"],
+            last_name=post_data["student_user"]["last_name"],
+            username=post_data["student_user"]["username"],
+            email=post_data["student_user"]["email"],
+
         )
 
         new_user.set_password(raw_password=password)
         new_user.save()
 
+
         new_student_user= StudentRegistration.objects.create(
                 student_user= new_user,
                 profile_picture=post_data["profile_picture"],
                 admission_number= post_data["admission_number"],
-                class_number= post_data["class_number"],
+    
                 age=post_data["age"],
                 gender=post_data["gender"],
                 parents_number=post_data["parents_number"],
@@ -121,20 +118,16 @@ class TeacherRegisterModelViewSet(ModelViewSet):
 
     def create(self, request, *args, **kwargs):
         post_data = request.data
-        first_name=post_data["student_user"]["first_name"]
-        last_name = post_data["student_user"]["last_name"]
-        username = post_data["student_user"]["username"]
-        email = post_data["student_user"]["email"]
-        password = post_data["student_user"]["password"]
+
 
         new_user = AddUser.objects.create(
-            first_name=first_name,
-            last_name=last_name,
-            username=username,
-            email=email,
+            first_name=post_data["teacher_user"]["first_name"],
+            last_name=post_data["teacher_user"]["last_name"],
+            username=post_data["teacher_user"]["username"],
+            email=post_data["teacher_user"]["email"],
         )
 
-        new_user.set_password(raw_password=password)
+        new_user.set_password(raw_password=post_data["teacher_user"]["password"])
         new_user.save()
 
         new_teacher_user = TeacherRegistration.objects.create(

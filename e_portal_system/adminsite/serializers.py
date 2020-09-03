@@ -4,24 +4,15 @@ from rest_framework import serializers
 class AdminLoginModelSerializer(serializers.ModelSerializer):
     class Meta:
         model = AddUser
-        fields = ["id","username","first_name","last_name","email"]
+        fields = ["id","username","first_name","last_name","email","password"]
+        depth=1
 
 
 class StudentModelSerializer(serializers.ModelSerializer):
-    student_user=AdminLoginModelSerializer(required=True)
     class Meta:
         model = StudentRegistration
-        # fields = "__all__"
-        fields = [
-            "student_user",
-            'admission_number',
-            'class_number',
-            'age',
-            'gender',
-            'parents_number',
-            'date_of_birth',
-            'address',
-        ]
+        fields = "__all__"
+
 #
 #         def create(self, validated_data):
 #             user_data = validated_data.pop('student_user')
@@ -80,7 +71,7 @@ class DirectMessageSerializer(serializers.ModelSerializer):
 class FetchSubject(serializers.ModelSerializer):
     class Meta:
         model= RoleForTeacher
-        fields=["subject_name"]
+        fields=["class_number","teacher_name","subject_name"]
 
 class TeacherRegistrationSerializers(serializers.ModelSerializer):
     class Meta:

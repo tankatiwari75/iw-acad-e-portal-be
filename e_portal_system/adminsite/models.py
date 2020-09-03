@@ -27,7 +27,7 @@ class StudentRegistration(models.Model):
     profile_picture = models.ImageField(null=True, blank=True)
     student_user = models.OneToOneField(AddUser,on_delete=models.CASCADE)
     admission_number = models.IntegerField(unique=True)
-    class_number = models.ForeignKey(AddClassNumber, to_field="class_number", on_delete=models.CASCADE)
+    class_number = models.ForeignKey(AddClassNumber, to_field="class_number", on_delete=models.CASCADE,null=True)
     age = models.IntegerField()
     GENDER_CHOICE = (
         ('M', 'Male'),

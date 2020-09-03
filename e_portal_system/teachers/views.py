@@ -6,7 +6,6 @@ from adminsite.models import StudentRegistration, RoleForTeacher, AddSubject
 from adminsite.serializers import GetStudentSerializers, FetchSubject,CreateSubjectSerializers
 from rest_framework.response import Response
 from rest_framework.generics import ListAPIView
-
 from teachers.serializers import (
                                 AttendanceUploadsModelSerializer,
                                 ResultUploadModelSerializer,
@@ -38,7 +37,20 @@ class StudentListForAttendance(viewsets.ViewSet):
 # For teacher to get subjects based on class_number
 class GetSubjectsByTeacher(viewsets.ViewSet):
     
-    def list(self, request,id,class_number):
-        queryset=RoleForTeacher.objects.filter(teacher_unique_id=id, class_number=class_number)
+    def list(self, request,teacher_id):
+        queryset=RoleForTeacher.objects.filter(teacher_name=teacher_id)
         serializer = FetchSubject(queryset, many=True)
+        return Response(serializer.data)
+
+class FetchAttendanceByStudent(viewsets.ViewSet):
+
+    def list(self, request,student_id):
+        queryset = AttendanceUploads.objects.filter(student_id=student_id)
+        serializer = AttendanceUploadsModelSerializer(queryset, many=True)
+        return Response(serializer.data)
+
+class FetchResultByStudent(viewsets.ViewSet):
+    def list(self, request,student_id):
+        queryset = ResultUpload.objects.filter(student_id=student_id)
+        serializer = ResultUploadModelSerializer(queryset, many=True)
         return Response(serializer.data)
