@@ -27,8 +27,10 @@ class StudentRegistration(models.Model):
     profile_picture = models.ImageField(null=True, blank=True)
     student_user = models.OneToOneField(AddUser,on_delete=models.CASCADE)
     admission_number = models.IntegerField(unique=True)
-    class_number = models.ForeignKey(AddClassNumber, to_field="class_number", on_delete=models.CASCADE,null=True)
-    age = models.IntegerField()
+    # class_number = models.ForeignKey(AddClassNumber, to_field="class_number", on_delete=models.CASCADE, null=False)
+    class_number = models.IntegerField(null=False, blank=False)
+    age = models.IntegerField(null=False, blank=False)
+    # age = models.IntegerField(null=False, blank=False)
     GENDER_CHOICE = (
         ('M', 'Male'),
         ('F', "Female"),
@@ -45,7 +47,7 @@ class StudentRegistration(models.Model):
 
 
 class TeacherRegistration(models.Model):
-    profile_picture = models.ImageField()
+    profile_picture = models.ImageField(blank=True, null = True)
     
     teacher_user = models.OneToOneField(AddUser, on_delete=models.CASCADE)
     teacher_unique_id = models.IntegerField(unique=True)

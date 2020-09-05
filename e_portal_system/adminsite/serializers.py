@@ -4,35 +4,17 @@ from rest_framework import serializers
 class AdminLoginModelSerializer(serializers.ModelSerializer):
     class Meta:
         model = AddUser
-        fields = ["id","username","first_name","last_name","email","password"]
+        fields = ["username","first_name","middle_name","last_name","email","password"]
         depth=1
 
 
 class StudentModelSerializer(serializers.ModelSerializer):
+    student_user = AdminLoginModelSerializer(required=True)
     class Meta:
         model = StudentRegistration
         fields = "__all__"
 
-#
-#         def create(self, validated_data):
-#             user_data = validated_data.pop('student_user')
-#             user = AdminLoginModelSerializer.create(AdminLoginModelSerializer(), validated_data=user_data)
-#             student, created = StudentRegistration.objects.update_or_create(
-#                 user=user,
-#                 subject_major=validated_data.pop('')
-#             )
-#             return student
 
-        # def validate_name(self, first_name):
-        #     if len(first_name) <= 2:
-        #         raise serializers.ValidationError("Name should be greater than 2 letters");
-        #     return first_name
-        #
-        # def validate(self, data):
-        #     name = data['first_name']
-        #     if len(name)  <=2:
-        #         raise serializers.ValidationError("Name should be greater than 2 letters")
-        #     return data
 
 
 class GetStudentSerializers(serializers.ModelSerializer):
@@ -74,6 +56,7 @@ class FetchSubject(serializers.ModelSerializer):
         fields=["class_number","teacher_name","subject_name"]
 
 class TeacherRegistrationSerializers(serializers.ModelSerializer):
+    teacher_user = AdminLoginModelSerializer(required=True)
     class Meta:
-        model= TeacherRegistration
-        fields="__all__"
+        model = TeacherRegistration
+        fields = "__all__"

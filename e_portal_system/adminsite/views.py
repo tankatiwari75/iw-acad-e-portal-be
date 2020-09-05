@@ -1,4 +1,6 @@
 from django.shortcuts import render
+from django.http import HttpResponse
+
 # from rest_framework.generics import CreateAPIView
 # from rest_framework.viewsets import ModelViewSet
 # from .models import AddSubject, NoticeUpload, StudentRegistration
@@ -37,10 +39,13 @@ from rest_framework.permissions import IsAuthenticated
 
 class StudentRegisterModelViewSet(ModelViewSet):
     serializer_class= StudentModelSerializer
-
+    # queryset = StudentRegistration.objects.all()
+    authentication_classes = [TokenAuthentication]
+    permission_classes = [IsAuthenticated]
 
     def get_queryset(self):
-        students= StudentRegistration.objects.all()
+        students= StudentRegistration.objects.all();
+        # classroom = AddClassNumber.objects.all();
         return students
 
     def create(self,request,*args,**kwargs):
@@ -48,11 +53,13 @@ class StudentRegisterModelViewSet(ModelViewSet):
         password=post_data["student_user"]["password"]
         new_user = AddUser.objects.create(
             first_name=post_data["student_user"]["first_name"],
+            middle_name=post_data["student_user"]["middle_name"],
             last_name=post_data["student_user"]["last_name"],
             username=post_data["student_user"]["username"],
             email=post_data["student_user"]["email"],
 
         )
+        print(new_user)
 
         new_user.set_password(raw_password=password)
         new_user.save()
@@ -62,17 +69,20 @@ class StudentRegisterModelViewSet(ModelViewSet):
                 student_user= new_user,
                 profile_picture=post_data["profile_picture"],
                 admission_number= post_data["admission_number"],
-    
                 age=post_data["age"],
                 gender=post_data["gender"],
                 parents_number=post_data["parents_number"],
                 date_of_birth=post_data["date_of_birth"],
-                address=post_data["address"]
+                address=post_data["address"],
+                class_number=post_data["class_number"]
         )
         new_student_user.save()
 
+
         serializer= StudentModelSerializer(new_student_user)
         return Response(serializer.data)
+        
+
 
 # Create your views here.
 class ClassCreateAPIView(CreateAPIView):
@@ -84,8 +94,8 @@ class ClassCreateAPIView(CreateAPIView):
 # class AdminLoginAPIVeiw(ListAPIView):
 #     queryset = AddUser.objects.all()
 #     serializer_class = AdminLoginModelSerializer
-#     authentication_classes = [TokenAuthentication]
-#     permission_classes = [IsAuthenticated]
+    authentication_classes = [TokenAuthentication]
+    permission_classes = [IsAuthenticated]
 
 
 class CreateSubjectAPIView(ModelViewSet):
@@ -122,6 +132,7 @@ class TeacherRegisterModelViewSet(ModelViewSet):
 
         new_user = AddUser.objects.create(
             first_name=post_data["teacher_user"]["first_name"],
+            middle_name=post_data["teacher_user"]["middle_name"],
             last_name=post_data["teacher_user"]["last_name"],
             username=post_data["teacher_user"]["username"],
             email=post_data["teacher_user"]["email"],
@@ -142,7 +153,8 @@ class TeacherRegisterModelViewSet(ModelViewSet):
 
         serializer = TeacherRegistrationSerializers(new_teacher_user)
         return Response(serializer.data)
-
+        authentication_classes = [TokenAuthentication]
+        permission_classes = [IsAuthenticated]
 
 class RoleforTeacherModelView(ModelViewSet):
     serializer_class = RoleForTeacherSerializer
