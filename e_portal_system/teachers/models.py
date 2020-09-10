@@ -11,6 +11,9 @@ class AttendanceUploads(models.Model):
     class_held= models.IntegerField(default=0)
     class_present = models.IntegerField(default=0)
 
+    def __str__(self):
+        return str(self.student_id)
+
 class ResultUpload(models.Model):
     student_id=models.ForeignKey(StudentRegistration,to_field="admission_number", on_delete=models.CASCADE)
     teacher_name= models.ForeignKey(TeacherRegistration, to_field="teacher_unique_id", on_delete=models.CASCADE)

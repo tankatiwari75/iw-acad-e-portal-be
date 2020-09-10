@@ -5,14 +5,9 @@ class AttendanceUploadsModelSerializer(serializers.ModelSerializer):
     class Meta:
         model = AttendanceUploads
         fields = "__all__"
-        # fields = [
-        #     'student_name',
-        #     'teacher_name',
-        #     'subject_name',
-        #     'student_id',
-        #     'attendance',
-        #     'date',
-        # ]
+
+    
+
 
 class ResultUploadModelSerializer(serializers.ModelSerializer):
     class Meta:

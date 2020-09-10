@@ -38,13 +38,13 @@ from rest_framework.permissions import IsAuthenticated
 class StudentRegisterModelViewSet(ModelViewSet):
     serializer_class= StudentModelSerializer
 
-
     def get_queryset(self):
         students= StudentRegistration.objects.all()
         return students
 
     def create(self,request,*args,**kwargs):
         post_data = request.data
+
         password=post_data["student_user"]["password"]
         new_user = AddUser.objects.create(
             first_name=post_data["student_user"]["first_name"],
@@ -98,8 +98,7 @@ class CreateSubjectAPIView(ModelViewSet):
 class NoticeBoardUploadView(ModelViewSet):
     serializer_class = NoticeUploadSerializers
     queryset = NoticeUpload.objects.all()
-    authentication_classes = [TokenAuthentication]
-    permission_classes = [IsAuthenticated]
+    
 
 #
 # class StudentRegisterModelViewSet(ModelViewSet):
@@ -147,8 +146,8 @@ class TeacherRegisterModelViewSet(ModelViewSet):
 class RoleforTeacherModelView(ModelViewSet):
     serializer_class = RoleForTeacherSerializer
     queryset = RoleForTeacher.objects.all()
-    authentication_classes = [TokenAuthentication]
-    permission_classes = [IsAuthenticated]
+    # authentication_classes = [TokenAuthentication]
+    # permission_classes = [IsAuthenticated]
 
 
 class DirectMessageModelView(ModelViewSet):
