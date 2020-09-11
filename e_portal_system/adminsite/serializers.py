@@ -1,11 +1,20 @@
-from .models import AddClassNumber, AddSubject, NoticeUpload, StudentRegistration, TeacherRegistration, RoleForTeacher, DirectMessageModel
+
+from .models import AddClassNumber, AddSubject, AddUser, NoticeUpload, StudentRegistration, RoleForTeacher, DirectMessageModel, TeacherRegistration
+
 from rest_framework import serializers
+
+class AdminLoginModelSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = AddUser
+        fields = "__all__"
+
 
 class StudentModelSerializer(serializers.ModelSerializer):
     class Meta:
         model = StudentRegistration
         # fields = "__all__"
         fields = [
+            'id',   
             'profile_picture',
             'first_name',
             'middle_name',
@@ -31,6 +40,8 @@ class StudentModelSerializer(serializers.ModelSerializer):
         #     if len(name)  <=2:
         #         raise serializers.ValidationError("Name should be greater than 2 letters")
         #     return data
+
+
 
 class GetStudentSerializers(serializers.ModelSerializer):
     class Meta:
@@ -85,8 +96,17 @@ class DirectMessageSerializer(serializers.ModelSerializer):
     class Meta:
         model = DirectMessageModel
         fields = "__all__"
-        
+
+
 class FetchSubject(serializers.ModelSerializer):
     class Meta:
+
         model = RoleForTeacher
         fields = ["subject_name"]
+
+
+class TeacherRegistrationSerializers(serializers.ModelSerializer):
+    class Meta:
+        model= TeacherRegistration
+        fields="__all__"
+

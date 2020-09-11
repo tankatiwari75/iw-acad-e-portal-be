@@ -67,6 +67,7 @@ class TeacherRegistration(models.Model):
 class NoticeUpload(models.Model):
     notice_title = models.CharField(max_length=200)
     notice_description = models.TextField()
+    created_by = models.CharField(max_length=200, null=False)
     time_changed = models.DateTimeField(auto_now=True)
     time_created = models.DateTimeField(auto_now_add=True)
 
@@ -88,12 +89,11 @@ class DirectMessageModel(models.Model):
     teacher_name = models.ForeignKey(TeacherRegistration, on_delete=models.CASCADE)
     student_name = models.ForeignKey(StudentRegistration, on_delete=models.CASCADE)
     message = models.TextField(blank=True, null=False)
-    attachment = models.FileField(upload_to='media', null=True, blank=True)
-    # attachment = models.ImageField(upload_to='media',null=True,blank=True)
-    created_at = models.DateTimeField(auto_now_add=True)
 
+    attachment = models.ImageField(upload_to='media', null=True, blank=True)
+    created_at = models.DateTimeField(auto_now_add=True, null=True, blank=True)
     def __str__(self):
-        return self.teacher_name
+        return str(self.teacher_name)
 
 
 
