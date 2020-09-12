@@ -79,7 +79,7 @@ class RoleForTeacher(models.Model):
 
 class DirectMessageModel(models.Model):
     teacher_name = models.ForeignKey(TeacherRegistration, to_field="teacher_unique_id", on_delete=models.CASCADE)
-    student_admission_number = models.ForeignKey(StudentRegistration,to_field="admission_number", on_delete=models.CASCADE)
+    admission_number = models.ForeignKey(StudentRegistration,to_field="admission_number", on_delete=models.CASCADE)
     message = models.TextField()
     attachment = models.ImageField(upload_to='media', null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
